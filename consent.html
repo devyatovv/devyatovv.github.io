@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Opt-In</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 30px;
+            background: #f9f9f9;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        input[type="tel"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .checkbox-group {
+            margin: 20px 0;
+        }
+        
+        label {
+            display: flex;
+            align-items: start;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        .success {
+            display: none;
+            padding: 20px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        
+        .terms {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>SMS Opt-In</h1>
+        <p>Sign up to receive messages from our AI SMS Assistant</p>
+        
+        <form id="optinForm">
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" required>
+                    <span>I consent to receive automated text messages from this AI assistant service. Message and data rates may apply.</span>
+                </label>
+                
+                <label>
+                    <input type="checkbox" required>
+                    <span>I understand I can text STOP to opt-out at any time, or text HELP for assistance.</span>
+                </label>
+            </div>
+            
+            <button type="submit">Subscribe to SMS</button>
+        </form>
+        
+        <div class="success" id="successMsg">
+            ✓ Thank you! You've successfully opted in to receive SMS messages.
+        </div>
+        
+        <div class="terms">
+            <strong>Terms:</strong> By opting in, you agree to receive automated messages. Reply STOP to unsubscribe. Reply HELP for help. Message frequency varies. Message and data rates may apply.
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('optinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('optinForm').style.display = 'none';
+            document.getElementById('successMsg').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
