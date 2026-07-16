@@ -41,6 +41,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>devyatovv.com</title>
+</svelte:head>
+
 <div class="flex flex-col gap-4 text-lg" use:popIn>
     <h1 class="text-3xl font-bold text-white">Vadim Devyatov</h1>
     <p>I'm a software developer from Colorado.</p>
