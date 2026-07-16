@@ -11,7 +11,7 @@
 <div class="flex flex-col gap-8 text-lg" use:popIn>
     {#each posts as post (post.slug)}
         <Card
-            class="group flex flex-col gap-1 p-5 transition-transform duration-100 ease-out hover:scale-101"
+            class="group flex flex-col gap-1 p-5"
         >
             <span class="flex items-baseline justify-between gap-4">
                 <a
