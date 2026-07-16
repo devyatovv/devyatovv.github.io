@@ -1,0 +1,32 @@
+<script lang="ts">
+    import Card from "$lib/components/Card.svelte";
+    import { popIn } from "$lib/popIn";
+    import { formatDate, posts } from "$lib/posts";
+</script>
+
+<svelte:head>
+    <title>Blog</title>
+</svelte:head>
+
+<div class="flex flex-col gap-8 text-lg" use:popIn>
+    {#each posts as post (post.slug)}
+        <Card
+            class="group flex flex-col gap-1 p-5 transition-transform duration-100 ease-out hover:scale-101"
+        >
+            <span class="flex items-baseline justify-between gap-4">
+                <a
+                    href="/blog/{post.slug}"
+                    class="text-xl text-white"
+                    >{post.title}</a
+                >
+                <time datetime={post.date} class="text-sm"
+                    >{formatDate(post.date)}</time
+                >
+            </span>
+
+            <span class="text-sm">{post.description}</span>
+        </Card>
+    {:else}
+        <p>Nothing here yet.</p>
+    {/each}
+</div>
