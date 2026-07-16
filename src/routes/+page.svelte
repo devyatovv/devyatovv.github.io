@@ -47,7 +47,7 @@
 
     <h2 class="mt-2 text-xl font-bold text-white">Links</h2>
 
-    <div class="flex gap-2">
+    <div class="flex flex-wrap gap-2">
         <Button href="https://github.com/devyatovv">GitHub</Button>
         <Button href="https://www.linkedin.com/in/devyatovv">LinkedIn</Button>
         <Button onclick={copyEmail}>Email</Button>
@@ -55,7 +55,7 @@
 
     <h2 class="mt-2 text-xl font-bold text-white">Technologies</h2>
 
-    <div class="grid grid-cols-3 gap-2">
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {#each technologies as technology (technology.name)}
             <Card class="flex items-center gap-3 p-4">
                 <img src={technology.image} alt="" class="size-8 shrink-0" />
