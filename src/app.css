@@ -24,3 +24,35 @@
 html {
     color-scheme: dark;
 }
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pop-in-container > * {
+    animation: popIn 300ms ease-out backwards;
+}
+
+.pop-in-container > *:nth-child(1)  { animation-delay: 0ms; }
+.pop-in-container > *:nth-child(2)  { animation-delay: 40ms; }
+.pop-in-container > *:nth-child(3)  { animation-delay: 80ms; }
+.pop-in-container > *:nth-child(4)  { animation-delay: 120ms; }
+.pop-in-container > *:nth-child(5)  { animation-delay: 160ms; }
+.pop-in-container > *:nth-child(6)  { animation-delay: 200ms; }
+.pop-in-container > *:nth-child(7)  { animation-delay: 240ms; }
+.pop-in-container > *:nth-child(8)  { animation-delay: 280ms; }
+.pop-in-container > *:nth-child(9)  { animation-delay: 320ms; }
+.pop-in-container > *:nth-child(10) { animation-delay: 360ms; }
+
+@media (prefers-reduced-motion: reduce) {
+    .pop-in-container > * {
+        animation: none;
+    }
+}

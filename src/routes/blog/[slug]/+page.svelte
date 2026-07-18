@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { popIn } from "$lib/popIn";
     import { formatDate } from "$lib/posts";
     let { data } = $props();
 </script>
@@ -9,14 +8,13 @@
     <meta name="description" content={data.post.description} />
 </svelte:head>
 
-<article class="flex flex-col gap-4 text-lg" use:popIn>
+<article class="flex flex-col gap-4 text-lg pop-in-container">
     <header class="flex flex-col gap-2 mb-2">
         <h1 class="text-3xl font-bold text-white">{data.post.title}</h1>
         <time datetime={data.post.date} class="text-sm">{formatDate(data.post.date)}</time>
     </header>
 
     <hr class="border-t border-border/40" />
-
     <data.post.component />
 </article>
 

@@ -10,7 +10,6 @@
     import tailwindLogo from "$lib/assets/tech/tailwindcss.svg";
     import typescriptLogo from "$lib/assets/tech/typescript.svg";
     import Button from "$lib/components/Button.svelte";
-    import { popIn } from "$lib/popIn";
     import { toast } from "$lib/toast.svelte";
 
     const technologies = [
@@ -56,7 +55,7 @@
     <title>devyatovv.com</title>
 </svelte:head>
 
-<div class="flex flex-col gap-4 text-lg" use:popIn>
+<div class="flex flex-col gap-4 text-lg pop-in-container">
     <h1 class="text-3xl font-bold text-white">Vadim Devyatov</h1>
     <p>{age}-year-old developer from Colorado</p>
 

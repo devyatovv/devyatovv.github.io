@@ -17,9 +17,7 @@
     const [send, receive] = crossfade({ duration: 250, easing: cubicOut });
 
     function isActive(href: string): boolean {
-        return href === "/"
-            ? page.url.pathname === "/"
-            : page.url.pathname.startsWith(href);
+        return page.url.pathname === href;
     }
 </script>
 
@@ -34,16 +32,16 @@
                 href={link.href}
                 draggable="false"
                 aria-current={isActive(link.href) ? "page" : undefined}
-                class="relative rounded-full px-5 py-1.5 transition-colors hover:text-white
-                    {isActive(link.href) ? 'text-white' : ''}"
+                class="relative rounded-full px-5 py-1.5 transition-colors hover:text-white {isActive(link.href) ? 'text-white' : ''}"
             >
                 {#if isActive(link.href)}
                     <span
-                        class="shadow-inset-medium absolute inset-0 rounded-full bg-white/10"
+                        class="shadow-inset-subtle absolute inset-0 rounded-full bg-white/10"
                         in:receive={{ key: "pill" }}
                         out:send={{ key: "pill" }}
                     ></span>
                 {/if}
+
                 <span class="relative">{link.label}</span>
             </a>
         {/each}
