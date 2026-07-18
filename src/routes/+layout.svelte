@@ -28,7 +28,7 @@
 </svelte:head>
 
 <header class="mb-12 flex items-center justify-center select-none">
-    <nav class="segmented flex gap-1 rounded-full border border-black/60 bg-white/5 p-1.5">
+    <nav class="glass-panel shadow-inset-subtle flex gap-1 rounded-full p-1.5">
         {#each links as link (link.href)}
             <a
                 href={link.href}
@@ -39,7 +39,7 @@
             >
                 {#if isActive(link.href)}
                     <span
-                        class="pill absolute inset-0 rounded-full bg-white/10"
+                        class="shadow-inset-medium absolute inset-0 rounded-full bg-white/10"
                         in:receive={{ key: "pill" }}
                         out:send={{ key: "pill" }}
                     ></span>
@@ -53,17 +53,3 @@
 {@render children()}
 
 <Toasts />
-
-<style>
-    .segmented {
-        box-shadow:
-            inset 0 1px 0 rgb(255 255 255 / 0.07),
-            inset 0 -1px 0 rgb(255 255 255 / 0.04);
-    }
-
-    .pill {
-        box-shadow:
-            inset 0 1px 0 rgb(255 255 255 / 0.1),
-            inset 0 -1px 0 rgb(255 255 255 / 0.05);
-    }
-</style>

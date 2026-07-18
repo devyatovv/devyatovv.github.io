@@ -50,9 +50,7 @@
         background: color-mix(in oklab, white 5%, transparent) !important;
         border: 1px solid rgb(0 0 0 / 0.6);
         border-radius: var(--radius-xl);
-        box-shadow:
-            inset 0 1px 0 rgb(255 255 255 / 0.07),
-            inset 0 -1px 0 rgb(255 255 255 / 0.04);
+        box-shadow: var(--shadow-inset-subtle);
         padding: calc(var(--spacing) * 4);
         overflow-x: auto;
     }

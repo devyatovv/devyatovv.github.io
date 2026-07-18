@@ -7,18 +7,9 @@
     {#each toasts as entry (entry.id)}
         <div
             transition:fly={{ x: 24, duration: 200 }}
-            class="toast rounded-lg border border-black/60 bg-white/5 px-4 py-3 text-white backdrop-blur"
+            class="glass-panel shadow-inset-medium shadow-[0_4px_16px_rgb(0_0_0/0.4)] rounded-lg px-4 py-3 text-white backdrop-blur"
         >
             {entry.message}
         </div>
     {/each}
 </div>
-
-<style>
-    .toast {
-        box-shadow:
-            inset 0 1px 0 rgb(255 255 255 / 0.1),
-            inset 0 -1px 0 rgb(255 255 255 / 0.05),
-            0 4px 16px rgb(0 0 0 / 0.4);
-    }
-</style>

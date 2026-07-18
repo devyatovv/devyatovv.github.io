@@ -10,6 +10,15 @@
     --color-card: #2A2A2A;
     --color-border: #777777;
     --color-link: #7788FF;
+
+    --shadow-inset-subtle: inset 0 1px 0 rgb(255 255 255 / 0.07), inset 0 -1px 0 rgb(255 255 255 / 0.04);
+    --shadow-inset-medium: inset 0 1px 0 rgb(255 255 255 / 0.1), inset 0 -1px 0 rgb(255 255 255 / 0.05);
+}
+
+@utility glass-panel {
+    border-width: 1px;
+    border-color: rgb(0 0 0 / 0.6);
+    background-color: rgb(255 255 255 / 0.05);
 }
 
 html {
