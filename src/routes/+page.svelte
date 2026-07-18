@@ -58,7 +58,7 @@
 
 <div class="flex flex-col gap-4 text-lg" use:popIn>
     <h1 class="text-3xl font-bold text-white">Vadim Devyatov</h1>
-    <p>{age}-year-old developer from Colorado.</p>
+    <p>{age}-year-old developer from Colorado</p>
 
     <h2 class="mt-2 text-xl font-bold text-white">Links</h2>
 
