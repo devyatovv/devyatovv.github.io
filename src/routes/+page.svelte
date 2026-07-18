@@ -27,6 +27,17 @@
 
     const encodedEmail = [113, 71, 33, 13, 105, 13, 38, 4, 119, 89, 94, 42, 18, 107, 12, 27, 29, 119, 88, 49, 27, 57, 85, 58, 25];
 
+    function getAge(birthDate: Date): number {
+        const today = new Date();
+        const isBeforeBirthday =
+            today.getMonth() < birthDate.getMonth() ||
+            (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate());
+
+        return today.getFullYear() - birthDate.getFullYear() - (isBeforeBirthday ? 1 : 0);
+    }
+
+    const age = getAge(new Date("2008-08-15"));
+
     async function copyEmail(event: MouseEvent) {
         if (!event.isTrusted) {
             return;
@@ -47,7 +58,7 @@
 
 <div class="flex flex-col gap-4 text-lg" use:popIn>
     <h1 class="text-3xl font-bold text-white">Vadim Devyatov</h1>
-    <p>I'm a software developer from Colorado.</p>
+    <p>{age}-year-old developer from Colorado.</p>
 
     <h2 class="mt-2 text-xl font-bold text-white">Links</h2>
 
