@@ -17,6 +17,10 @@
     const [send, receive] = crossfade({ duration: 250, easing: cubicOut });
 
     function isActive(href: string): boolean {
+        if (href.startsWith("/blog") && page.url.pathname.startsWith("/blog")) {
+            return true;
+        }
+
         return page.url.pathname === href;
     }
 </script>
