@@ -72,7 +72,7 @@
     <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {#each technologies as technology (technology.name)}
             <Card class="flex items-center gap-3 p-4">
-                <img src={technology.image} alt="" class="size-8 shrink-0" />
+                <img src={technology.image} alt="" class="size-8 shrink-0 select-none" />
                 <span class="text-white">{technology.name}</span>
             </Card>
         {/each}
