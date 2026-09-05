@@ -1,12 +1,20 @@
 @import "tailwindcss";
 @import "@fontsource-variable/inter";
 @import "@fontsource/instrument-serif";
+@import "katex/dist/katex.min.css";
+
+.katex,
+.katex * {
+    -webkit-user-select: none;
+    user-select: none;
+}
 
 @theme {
     --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
     --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
     --color-background: #1A1A1A;
     --color-foreground: #AAAAAA;
+    --color-selection: #3F3F3F;
     --color-card: #2A2A2A;
     --color-border: #777777;
     --color-link: #7788FF;
@@ -23,6 +31,10 @@
 
 html {
     color-scheme: dark;
+}
+
+::selection {
+    background: var(--color-selection);
 }
 
 @keyframes popIn {

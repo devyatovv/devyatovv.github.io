@@ -7,7 +7,7 @@
     <title>Blog</title>
 </svelte:head>
 
-<div class="flex flex-col gap-8 text-lg pop-in-container">
+<div class="flex flex-col gap-3 text-lg pop-in-container">
     {#each posts as post (post.slug)}
         <Card class="group flex flex-col gap-1 p-5">
             <span class="flex items-baseline justify-between gap-4">
