@@ -37,6 +37,68 @@
 
     const age = getAge(new Date("2008-08-15"));
 
+    function trackCardGlow(container: HTMLElement) {
+        const cards = Array.from(
+            container.querySelectorAll<HTMLElement>("[data-cursor-glow]")
+        );
+        let animationFrame = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+
+        function renderGlow() {
+            for (const card of cards) {
+                const bounds = card.getBoundingClientRect();
+
+                card.style.setProperty("--card-cursor-x", `${cursorX - bounds.left}px`);
+                card.style.setProperty("--card-cursor-y", `${cursorY - bounds.top}px`);
+                card.style.setProperty("--card-glow-opacity", "1");
+            }
+
+            animationFrame = 0;
+        }
+
+        function updateGlow(event: PointerEvent) {
+            if (event.pointerType === "touch") {
+                return;
+            }
+
+            cursorX = event.clientX;
+            cursorY = event.clientY;
+
+            if (!animationFrame) {
+                animationFrame = requestAnimationFrame(renderGlow);
+            }
+        }
+
+        function hideGlow() {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = 0;
+
+            for (const card of cards) {
+                card.style.setProperty("--card-glow-opacity", "0");
+            }
+        }
+
+        function hideGlowOutsideWindow(event: PointerEvent) {
+            if (!event.relatedTarget) {
+                hideGlow();
+            }
+        }
+
+        window.addEventListener("pointermove", updateGlow, { passive: true });
+        window.addEventListener("pointerout", hideGlowOutsideWindow);
+        window.addEventListener("blur", hideGlow);
+
+        return {
+            destroy() {
+                hideGlow();
+                window.removeEventListener("pointermove", updateGlow);
+                window.removeEventListener("pointerout", hideGlowOutsideWindow);
+                window.removeEventListener("blur", hideGlow);
+            }
+        };
+    }
+
     async function copyEmail(event: MouseEvent) {
         if (!event.isTrusted) {
             return;
@@ -55,7 +117,7 @@
     <title>devyatovv.com</title>
 </svelte:head>
 
-<div class="flex flex-col gap-4 text-lg pop-in-container">
+<div class="flex flex-col gap-4 text-lg pop-in-container" use:trackCardGlow>
     <h1 class="text-3xl font-bold text-white">Vadim Devyatov</h1>
     <p>{age}-year-old developer from Colorado</p>
 
@@ -71,7 +133,7 @@
 
     <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {#each technologies as technology (technology.name)}
-            <Card class="flex items-center gap-3 p-4">
+            <Card cursorGlow class="flex items-center gap-3 p-4">
                 <img src={technology.image} alt="" class="size-8 shrink-0 select-none" />
                 <span class="text-white">{technology.name}</span>
             </Card>
@@ -80,7 +142,7 @@
 
     <h2 class="mt-2 text-xl font-bold text-white">Projects</h2>
 
-    <Card class="flex items-center gap-4 p-5">
+    <Card cursorGlow class="flex items-center gap-4 p-5">
         <img src="/monolith.svg" alt="" class="size-10 shrink-0" />
 
         <div class="flex flex-col">

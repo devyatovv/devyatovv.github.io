@@ -29,6 +29,74 @@
     background-color: rgb(255 255 255 / 0.05);
 }
 
+.cursor-glow-card {
+    --card-cursor-x: -1000px;
+    --card-cursor-y: -1000px;
+    --card-glow-opacity: 0;
+
+    position: relative;
+    isolation: isolate;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .cursor-glow-card::before {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        border-radius: inherit;
+        content: "";
+        opacity: var(--card-glow-opacity);
+        pointer-events: none;
+        transition: opacity 120ms ease-out;
+        background: radial-gradient(
+            200px circle at var(--card-cursor-x) var(--card-cursor-y),
+            rgb(255 255 255 / 0.05),
+            transparent 75%
+        );
+    }
+
+    .cursor-glow-card > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .cursor-glow-card > .cursor-glow-border {
+        position: absolute;
+        inset: -1px;
+        z-index: 2;
+        box-sizing: border-box;
+        padding: 1px;
+        border-radius: calc(0.75rem + 1px);
+        opacity: var(--card-glow-opacity);
+        pointer-events: none;
+        transition: opacity 120ms ease-out;
+        background: radial-gradient(
+            170px circle at var(--card-cursor-x) var(--card-cursor-y),
+            rgb(160 160 160 / 0.42),
+            transparent 75%
+        );
+        mask-image:
+            linear-gradient(#000 0 0),
+            linear-gradient(#000 0 0);
+        mask-clip: content-box, border-box;
+        mask-origin: border-box;
+        mask-composite: exclude;
+        -webkit-mask-image:
+            linear-gradient(#000 0 0),
+            linear-gradient(#000 0 0);
+        -webkit-mask-clip: content-box, border-box;
+        -webkit-mask-origin: border-box;
+        -webkit-mask-composite: xor;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .cursor-glow-card::before,
+        .cursor-glow-card > .cursor-glow-border {
+            transition: none;
+        }
+    }
+}
+
 html {
     color-scheme: dark;
 }
